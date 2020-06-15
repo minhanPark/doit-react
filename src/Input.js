@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 
 class Input extends PureComponent {
   constructor(props) {
@@ -45,6 +46,17 @@ class Input extends PureComponent {
     );
   }
 }
+
+Input.propTypes = {
+  type: PropTypes.oneOf(["text", "number", "price"]),
+  name: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  errorMessage: PropTypes.string,
+  label: PropTypes.string,
+  onChange: PropTypes.func,
+  onFocus: PropTypes.func,
+  autoFocus: PropTypes.bool,
+};
 
 Input.defaultProps = {
   onChange: () => {},
