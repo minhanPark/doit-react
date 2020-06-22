@@ -11,8 +11,9 @@ export default function createModalProvider(ContentMap = {}) {
       this.handleClose = this.handleClose.bind(this);
       this.handleOpen = this.handleOpen.bind(this);
     }
-    handleOpen(contentId) {
+    handleOpen(contentId, modalProps) {
       this.contentId = contentId;
+      this.modalProps = modalProps;
       this.setState({ showModal: true });
     }
     handleClose() {
@@ -29,7 +30,7 @@ export default function createModalProvider(ContentMap = {}) {
           {children}
           {showModal && ModalContent && (
             <Modal>
-              <ModalContent />
+              <ModalContent {...this.modalProps} />
             </Modal>
           )}
         </Provider>
